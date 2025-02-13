@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
+<title>Synthèse vocals</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body style="background: #ff0844"> 
+  <div class="container">
+    <h4><i>👉 Echo " Veuillez saisir un texte par exemple ANNIX_ART😉</i>"</h4>
+    <div class="box">
+      <input name="text" type="text"  id="inputText">
+      <span id="voiceIco">🔈</span>
+    </div>
+    <div id='Artadji_Artadji'></div>
+    <button id="Anisse_Artadji">Synthèse vocals</button>
+  </div>
+
+<script>
+	var Anisse_Artadji = document.getElementById('Anisse_Artadji'),
+voiceIco = document.getElementById('voiceIco'),
+speech  = document.getElementById('inputText'),
+count = 1;
+
+speech.addEventListener('change',function(){
+  speechText = this.value;
+  speechSynthesis.cancel();
+  Anniss_Artadji.innerHTML = "Synthèse vocals";
+  voiceIco.innerHTML="🔈";
+});
+Anisse_Artadji.addEventListener('click',function(){
+  if(!speechSynthesis.speaking || speechSynthesis.pause()){
+    speechText = speech.value;
+    var speechVoice = new SpeechSynthesisUtterance();
+    var voices = speechSynthesis.getVoices();
+    speechVoice.voice = voices[2];
+    speechVoice.text = speechText;
+    speechVoice.lang = 'en-US';
+    speechSynthesis.speak(speechVoice);  
+  }
+
+if(count == 1){
+  Anisse_Artadji.innerHTML = "Play";
+  voiceIco.innerHTML="🔊";
+  speechSynthesis.resume()
+  setTimeout(() => {
+    count = 2;
+  }, 300);
+  
+}else{
+  speechSynthesis.paused
+  Anisse_Artadji.innerHTML = "Pause";
+  voiceIco.innerHTML="🔈";
+  count = 1;
+
+}
+setInterval(() => {
+  if(!speechSynthesis.speaking && count == 2){
+    Anisse_Artadji.innerHTML = "Synthèse vocale";
+    voiceIco.innerHTML="🔈";
+    count = 1;
+    console.log(count)
+  }
+},100);
+
+})
+
+</script>
+
+
+<style>
+	*,*:after,*:before{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body{
+    font-family: arial; font-size: 16px;
+    margin: 0;color: #000; display: flex; min-height: 100vh;align-items: center;justify-content: center;
+}
+.container{
+width: 680px;text-align: center;padding: 30px; background: #fff;border-radius: 15px;
+}
+#inputText{
+     width: 420px;height: 220px;padding: 20px;resize: none;font-size: 20px;font-family: arial;
+ box-shadow: 0 0 5px #8c8c8c ;border: 3px solid #8c8c8c;border-radius: 10px;outline: 0;
+}
+.box{
+     display: flex;align-items: center; justify-content: space-between;margin-bottom: 100px;
+}
+#voiceIco{
+  font-size: 150px;width: 210px;text-align:left;
+}
+#Anisse_Artadji{
+    padding: 15px 35px;border-radius: 10px;border: 0; font-size: 20px;
+    background: red;color: #fff;box-shadow: -6px -6px 0 gray;
+}
+ #Artadji_Artadji {
+    height:100px;width:100px;
+    background-color:blue;opacity:0.5;border:1px solid black;
+}
+#Artadji_Artadji {
+    animation-name: heartbeat;
+    animation-duration: 1s;animation-iteration-count: infinite;
+       }
+    @keyframes heartbeat {
+      0%    { width:100px; }50%   { width:200px; }100%  { width:100px; }
+    }
+
+</style>
+</body>
+</html>
+
+
+
+
+  
